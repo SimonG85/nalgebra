@@ -98,25 +98,25 @@ impl From<(DVec3, DQuat)> for Isometry3<f64> {
 
 impl From<(Vec3, Quat)> for Isometry2<f32> {
     fn from((tra, rot): (Vec3, Quat)) -> Self {
-        Isometry2::new([tra.x, tra.y].into(), rot.to_axis_angle().1)
+        Isometry2::new([tra.x, tra.y].into(), rot.to_scaled_axis().z)
     }
 }
 
 impl From<(DVec3, DQuat)> for Isometry2<f64> {
     fn from((tra, rot): (DVec3, DQuat)) -> Self {
-        Isometry2::new([tra.x, tra.y].into(), rot.to_axis_angle().1)
+        Isometry2::new([tra.x, tra.y].into(), rot.to_scaled_axis().z)
     }
 }
 
 impl From<(Vec2, Quat)> for Isometry2<f32> {
     fn from((tra, rot): (Vec2, Quat)) -> Self {
-        Isometry2::new(tra.into(), rot.to_axis_angle().1)
+        Isometry2::new(tra.into(), rot.to_scaled_axis().z)
     }
 }
 
 impl From<(DVec2, DQuat)> for Isometry2<f64> {
     fn from((tra, rot): (DVec2, DQuat)) -> Self {
-        Isometry2::new(tra.into(), rot.to_axis_angle().1)
+        Isometry2::new(tra.into(), rot.to_scaled_axis().z)
     }
 }
 
@@ -146,13 +146,13 @@ impl From<DQuat> for Isometry3<f64> {
 
 impl From<Quat> for Isometry2<f32> {
     fn from(rot: Quat) -> Self {
-        Isometry2::new(Vector2::zeros(), rot.to_axis_angle().1)
+        Isometry2::new(Vector2::zeros(), rot.to_scaled_axis().z)
     }
 }
 
 impl From<DQuat> for Isometry2<f64> {
     fn from(rot: DQuat) -> Self {
-        Isometry2::new(Vector2::zeros(), rot.to_axis_angle().1)
+        Isometry2::new(Vector2::zeros(), rot.to_scaled_axis().z)
     }
 }
 
